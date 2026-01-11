@@ -1,0 +1,39 @@
+name: 🐛 Bug Report
+description: Create a report to help us fix issues
+title: "[Bug]: "
+labels: [“bug”, “triage”]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to report an issue! Please provide as much detail as possible.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Issue Description
+      description: What happened? What do you need?
+      placeholder: Please describe the bug clearly and concisely...
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction Steps
+      description: How can we reproduce this issue?
+      placeholder: |
+        1. Run command ‘...’
+        2. Enter data ‘...’
+        3. Observe error
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Environment Information
+      description: OS, Go version, invar version, etc.
+      placeholder: Go 1.25, macOS 15...
+    validations:
+      required: true

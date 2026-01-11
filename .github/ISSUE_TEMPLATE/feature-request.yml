@@ -1,0 +1,32 @@
+name: 🚀 Feature Request
+description: Suggest adding new functionality to this project
+title: "[Feat]: "
+labels: [“enhancement”, “triage”]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for your suggestion! Please describe the problem you'd like to solve.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Pain Point Description
+      description: What problem does this feature solve?
+      placeholder: I'm always frustrated by manually handling enums...
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: How do you envision it working?
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternative Solutions
+      description: Have you considered other approaches?
