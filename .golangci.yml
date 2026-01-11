@@ -1,0 +1,124 @@
+version: "2"
+run:
+  concurrency: 4
+  timeout: 5m
+  issues-exit-code: 1
+  tests: true
+  go: ""
+
+output:
+  formats:
+    text:
+      print-issued-lines: true
+      print-linter-name: true
+      colors: true
+  path-prefix: ""
+  path-mode: "abs"
+formatters:
+  settings:
+    gofumpt:
+      extra-rules: true
+    goimports:
+      local-prefixes:
+        - github.com/Nagato-Yuzuru/invar-enum
+  enable:
+    - gofumpt
+    - goimports
+linters:
+  default: none
+  enable:
+    - errcheck
+    - govet
+    - ineffassign
+    - staticcheck
+    - unused
+
+    - wsl_v5
+    - revive
+    - misspell
+    - unconvert
+    - whitespace
+
+    - sloglint
+    - bodyclose
+    - noctx
+    - goconst
+    - gocritic
+    - prealloc
+    - nilerr
+
+    - gosec
+  settings:
+    errcheck:
+      check-type-assertions: true
+      check-blank: true
+
+    govet:
+      enable-all: false
+      enable:
+        - atomic
+        - loopclosure
+        - nilfunc
+        - shadow
+        - unsafeptr
+        - unusedresult
+
+    revive:
+      severity: warning
+      rules:
+        - name: atomic
+        - name: line-length-limit
+          severity: warning
+          arguments: [120]
+        - name: unhandled-error
+          arguments: ["fmt.Printf", "myFunction"]
+        - name: package-comments
+        - name: error-naming
+        - name: error-strings
+        - name: if-return
+        - name: var-naming
+        - name: var-declaration
+
+
+    wsl_v5:
+      allow-first-in-block: true
+      allow-whole-block: false
+      branch-max-lines: 2
+
+    gocritic:
+      enabled-tags:
+        - diagnostic
+        - experimental
+        - opinionated
+        - performance
+        - style
+      disabled-checks:
+        - whyNoLint
+        - hugeParam
+        - ifElseChain
+
+    gosec:
+      excludes:
+        - G204
+
+    goconst:
+      min-len: 3
+      min-occurrences: 3
+  exclusions:
+    rules:
+      - path: "_test\\.go"
+        linters:
+          - bodyclose
+          - noctx
+          - goconst
+          - gosec
+          - funlen
+      - path: "main\\.go"
+        text: "SA5001"
+        linters:
+          - forbidigo
+
+
+issues:
+  max-issues-per-linter: 0
+  max-same-issues: 0
